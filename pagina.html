@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fotos de Mi Boda</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+            color: #333;
+        }
+        header {
+            text-align: center;
+            padding: 50px 0;
+            background-color: #ffcccb;
+            color: #fff;
+        }
+        h1 {
+            font-family: 'arial'; 
+            margin: 0;
+            font-size: 3em;
+            color: #fff; /* Color del texto blanco */
+             text-shadow: 
+          -1px -1px 0 #ccc,  
+           1px -1px 0 #ccc,
+           -1px 1px 0 #ccc,
+           1px 1px 0 #ccc; /* Contorno negro */
+            
+
+            }
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 20px;
+            justify-content: center;
+        }
+        .gallery-item {
+            width: calc(33.333% - 20px);
+            margin: 10px;
+            text-align: center;
+        }
+        .gallery img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            padding-top: 60px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+        }
+        .modal-content img {
+            width: 100%;
+        }
+        .close {
+            position: absolute;
+            top: 30px;
+            right: 35px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+        .close:hover,
+        .close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .caption {
+            font-style: italic;
+            color: #000;
+            font-family: 'Times New Roman', Times, serif;
+            text-align: center;
+            margin: 20px 0;
+            position: relative; /* Añadido para posicionamiento relativo */
+        }
+        .footer {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            font-size: 0.8em;
+            color: #666;
+            margin-top: 10px;
+        }
+        @media only screen and (max-width: 700px) {
+            .gallery-item {
+                width: calc(50% - 20px);
+            }
+        }
+        @media only screen and (max-width: 500px) {
+            .gallery-item {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Fotos de Mi Boda</h1>
+</header>
+
+<div class="gallery">
+    <div class="gallery-item">
+        <img src="foto1.jpg" alt="Foto 1">
+    </div>
+    <div class="gallery-item">
+        <img src="foto2.jpg" alt="Foto 2">
+    </div>
+    <div class="gallery-item">
+        <img src="foto3.jpg" alt="Foto 3">
+    </div>
+    <!-- Agrega más fotos según sea necesario -->
+</div>
+
+<div class="caption">
+    El amor es sufrido, es benigno; el amor no tiene envidia, el amor no es jactancioso, no se envanece; <br>
+    no hace nada indebido, no busca lo suyo, no se irrita, no guarda rencor; <br>
+    no se goza de la injusticia, mas se goza de la verdad.<br>
+   
+    
+</div>
+<div class="footer">
+    <div style="font-size: 0.9em; text-align: right;">
+        1 Corintios 13,4-7
+    </div>
+</div>
+<div id="myModal" class="modal">
+    <span class="close">&times;</span>
+    <div class="modal-content">
+        <img id="modalImage" src="">
+    </div>
+</div>
+
+<script>
+    const images = document.querySelectorAll('.gallery img');
+    const modal = document.getElementById('myModal');
+    const modalImg = document.getElementById('modalImage');
+    const closeBtn = document.querySelector('.close');
+
+    images.forEach(image => {
+        image.addEventListener('click', () => {
+            modal.style.display = 'block';
+            modalImg.src = image.src;
+        });
+    });
+
+    closeBtn.addEventListener('click', () => {
+        modal.style.display = 'none';
+    });
+
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.style.display = 'none';
+        }
+    });
+</script>
+
+</body>
+</html>
